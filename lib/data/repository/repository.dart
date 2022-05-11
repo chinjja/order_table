@@ -14,7 +14,7 @@ class Repository {
         .openDatabase(_databasePath ?? inMemoryDatabasePath);
     await _db!.transaction((txn) async {
       await txn.execute(
-        '''create table $table (
+        '''create table if not exists $table (
           id integer primary key,
           path text not null,
           width real not null,
